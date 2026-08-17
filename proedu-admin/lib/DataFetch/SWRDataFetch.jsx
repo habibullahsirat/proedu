@@ -23,3 +23,8 @@ export const useFeedbackData = () => {
   const { data, error, mutate } = useSWR(`${API_URL}/api/feedback`, fetcher);
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useCourseData = () => {
+  const { data, error, mutate } = useSWR(`${API_URL}/api/course`, fetcher);
+  return { data, error, isLoading: !data && !error, mutate };
+};
