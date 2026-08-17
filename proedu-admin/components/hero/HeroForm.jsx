@@ -97,12 +97,21 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         onChange={handleChange}
         error={errors.description}
       />
+
       <Input
         label="CTA Title"
         name="ctaTitle"
         value={formData.ctaTitle}
         onChange={handleChange}
         error={errors.ctaTitle}
+      />
+
+      <Input
+        label="CTA Link"
+        name="ctaLink"
+        value={formData.ctaLink}
+        onChange={handleChange}
+        error={errors.ctaLink}
       />
 
       {/* Image */}
@@ -115,102 +124,6 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         onChange={handleImageChange}
         error={errors.image}
       />
-
-      {/* CTA */}
-
-      <div className="border-t pt-6">
-        <h2 className="font-semibold mb-4">CTA Button</h2>
-
-        <Input
-          label="Button Text"
-          name="cta.text"
-          value={formData.cta.text}
-          onChange={handleChange}
-        />
-
-        <div className="mt-4">
-          <Input
-            label="Button Link"
-            name="cta.href"
-            value={formData.cta.href}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-
-      {/* Program Heading */}
-
-      <div className="border-t pt-6">
-        <Input
-          label="Program Heading"
-          name="programHeading"
-          value={formData.programHeading}
-          onChange={handleChange}
-          error={errors.programHeading}
-        />
-      </div>
-
-      {/* Programs */}
-
-      <div className="border rounded-lg p-5">
-        <div className="flex justify-between items-center mb-5">
-          <h2 className="font-semibold">Programs</h2>
-
-          <button
-            type="button"
-            onClick={addProgram}
-            className="bg-blue-600 text-white px-3 py-2 rounded"
-          >
-            + Add Program
-          </button>
-        </div>
-
-        {formData.programs.map((program, index) => (
-          <div key={index} className="border rounded-lg p-4 mb-4">
-            <Input
-              label={`Program ${index + 1} Title`}
-              value={program.programTitle}
-              onChange={(e) =>
-                handleProgramChange(index, "programTitle", e.target.value)
-              }
-              error={errors[`programTitle_${index}`]}
-            />
-
-            <div className="mt-4">
-              <Input
-                label="Program Description"
-                value={program.programDescription}
-                onChange={(e) =>
-                  handleProgramChange(
-                    index,
-                    "programDescription",
-                    e.target.value,
-                  )
-                }
-                error={errors[`programDescription_${index}`]}
-              />
-            </div>
-
-            <div className="mt-4">
-              <Input
-                label="Program Link"
-                value={program.href}
-                onChange={(e) =>
-                  handleProgramChange(index, "href", e.target.value)
-                }
-              />
-            </div>
-
-            <button
-              type="button"
-              onClick={() => removeProgram(index)}
-              className="mt-4 text-red-600 hover:text-red-700"
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
 
       {/* Buttons */}
 
