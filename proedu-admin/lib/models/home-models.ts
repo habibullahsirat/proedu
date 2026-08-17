@@ -1,45 +1,45 @@
 import mongoose, { Schema } from "mongoose";
 
 // CTA Button
-const ctaSchema = new Schema(
-  {
-    text: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    href: {
-      type: String,
-      trim: true,
-    },
-  },
-  { _id: false },
-);
+// const ctaSchema = new Schema(
+//   {
+//     text: {
+//       type: String,
+//       required: true,
+//       trim: true,
+//     },
+//     href: {
+//       type: String,
+//       trim: true,
+//     },
+//   },
+//   { _id: false },
+// );
 
-//Hero Section
-// Program Item
-const programSchema = new Schema(
-  {
-    programTitle: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+// //Hero Section
+// // Program Item
+// const programSchema = new Schema(
+//   {
+//     programTitle: {
+//       type: String,
+//       required: true,
+//       trim: true,
+//     },
 
-    programDescription: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+//     programDescription: {
+//       type: String,
+//       required: true,
+//       trim: true,
+//     },
 
-    href: {
-      type: String,
-      trim: true,
-      default: "#",
-    },
-  },
-  { _id: false },
-);
+//     href: {
+//       type: String,
+//       trim: true,
+//       default: "#",
+//     },
+//   },
+//   { _id: false },
+// );
 
 // Hero Section
 const heroSectionSchema = new Schema(
