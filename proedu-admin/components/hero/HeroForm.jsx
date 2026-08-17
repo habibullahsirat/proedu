@@ -6,27 +6,10 @@ import PhotoUpload from "@/components/ui/PhotoUpload";
 export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
-    subtitle: initialData?.subtitle || "",
-
+    description: initialData?.description || "",
+    ctaTitle: initialData?.ctaTitle || "",
+    ctaLink: initialData?.ctaLink || "",
     image: initialData?.image || "",
-
-    cta: {
-      text: initialData?.cta?.text || "",
-      href: initialData?.cta?.href || "",
-    },
-
-    programHeading: initialData?.programHeading || "",
-
-    programs:
-      initialData?.programs?.length > 0
-        ? initialData.programs
-        : [
-            {
-              programTitle: "",
-              programDescription: "",
-              href: "",
-            },
-          ],
   });
 
   const [errors, setErrors] = useState({});
@@ -41,19 +24,12 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     if (name.startsWith("cta.")) {
       const field = name.split(".")[1];
 
-      setFormData((prev) => ({
-        ...prev,
-        cta: {
-          ...prev.cta,
-          [field]: value,
-        },
-      }));
-    } else {
+
       setFormData((prev) => ({
         ...prev,
         [name]: value,
       }));
-    }
+
 
     setErrors((prev) => ({
       ...prev,
@@ -77,51 +53,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     }));
   };
 
-  // ============================
-  // Programs
-  // ============================
 
-  const handleProgramChange = (index, field, value) => {
-    const updated = [...formData.programs];
-
-    updated[index][field] = value;
-
-    setFormData((prev) => ({
-      ...prev,
-      programs: updated,
-    }));
-  };
-
-  const addProgram = () => {
-    setFormData((prev) => ({
-      ...prev,
-      programs: [
-        ...prev.programs,
-        {
-          programTitle: "",
-          programDescription: "",
-          href: "",
-        },
-      ],
-    }));
-  };
-
-  const removeProgram = (index) => {
-    const updated = formData.programs.filter((_, i) => i !== index);
-
-    setFormData((prev) => ({
-      ...prev,
-      programs: updated.length
-        ? updated
-        : [
-            {
-              programTitle: "",
-              programDescription: "",
-              href: "",
-            },
-          ],
-    }));
-  };
 
   // ============================
   // Validation
@@ -132,9 +64,11 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
 
     if (!formData.title.trim()) newErrors.title = "Title is required";
 
-    if (!formData.subtitle.trim()) newErrors.subtitle = "Subtitle is required";
+    if (!formData.description.trim()) newErrors.description = "Description is required";
+    if (!formData.ctaTitle.trim()) newErrors.ctaTitle = "CTA Title is required";
+    if (!formData.description.trim()) newErrors.description = "Description is required";
 
-    if (!formData.programHeading.trim()) newErrors.programHeading = "Required";
+
 
     if (!formData.image) newErrors.image = "Image is required";
 
