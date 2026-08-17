@@ -123,10 +123,39 @@ const FAQSchema = new mongoose.Schema(
   },
 );
 
+// Feedback Section
+const FeedbackSchema = new mongoose.Schema(
+  {
+    feedback: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    department: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
 delete mongoose.models.ExploreSection;
 delete mongoose.models.FAQSection;
+delete mongoose.models.FeedbackSchema;
 
 export const HeroSection =
   mongoose.models.HeroSection ||
@@ -138,3 +167,7 @@ export const ExploreSection =
 
 export const FAQSection =
   mongoose.models.FAQSection || mongoose.model("FAQSection", FAQSchema);
+
+export const FeedbackSection =
+  mongoose.models.FeedbackSection ||
+  mongoose.model("FeedbackSection", FeedbackSchema);
