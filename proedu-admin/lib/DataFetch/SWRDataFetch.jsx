@@ -8,7 +8,13 @@ export const useHeroData = () => {
   const { data, error, mutate } = useSWR(`${API_URL}/api/hero`, fetcher);
   return { data, error, isLoading: !data && !error, mutate };
 };
+
 export const useExploreData = () => {
   const { data, error, mutate } = useSWR(`${API_URL}/api/explore`, fetcher);
+  return { data, error, isLoading: !data && !error, mutate };
+};
+
+export const useFAQData = () => {
+  const { data, error, mutate } = useSWR(`${API_URL}/api/faq`, fetcher);
   return { data, error, isLoading: !data && !error, mutate };
 };
