@@ -1,10 +1,15 @@
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
 
 const SOCIALS = [
-  { icon: Facebook, label: "Facebook" },
-  { icon: Twitter, label: "Twitter" },
-  { icon: Linkedin, label: "LinkedIn" },
-  { icon: Instagram, label: "Instagram" },
+  { icon: FaFacebookF, label: "Facebook" },
+  { icon: FaTwitter, label: "Twitter" },
+  { icon: FaLinkedinIn, label: "LinkedIn" },
+  { icon: FaInstagram, label: "Instagram" },
 ];
 
 export default function Footer() {
