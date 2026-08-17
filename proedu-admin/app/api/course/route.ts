@@ -1,13 +1,13 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { FeedbackSection } from "@/lib/models/home-models";
+import { CourseSection } from "@/lib/models/home-models";
 import { NextResponse } from "next/server";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 
 export async function GET() {
   await connectToDB();
-  const faq = await FeedbackSection.find();
-  const response = NextResponse.json(faq);
+  const course = await CourseSection.find();
+  const response = NextResponse.json(course);
   // response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Allow-Origin", PUBLIC_URL);
   return response;
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     // Connect to the database
     await connectToDB();
-    await FeedbackSection.create(data);
+    await CourseSection.create(data);
     return NextResponse.json({ message: "Data created" }, { status: 201 });
   } catch (error) {
     console.error("Error creating data:", error);
