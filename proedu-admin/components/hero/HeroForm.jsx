@@ -21,16 +21,6 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name.startsWith("cta.")) {
-      const field = name.split(".")[1];
-
-
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-
-
     setErrors((prev) => ({
       ...prev,
       [name]: "",
@@ -53,8 +43,6 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     }));
   };
 
-
-
   // ============================
   // Validation
   // ============================
@@ -64,24 +52,12 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
 
     if (!formData.title.trim()) newErrors.title = "Title is required";
 
-    if (!formData.description.trim()) newErrors.description = "Description is required";
-    if (!formData.ctaTitle.trim()) newErrors.ctaTitle = "CTA Title is required";
-    if (!formData.description.trim()) newErrors.description = "Description is required";
+    if (!formData.description.trim())
+      newErrors.description = "Description is required";
 
-
-
+    if (!formData.ctaTitle) newErrors.ctaTitle = "CTA Title is required";
+    if (!formData.ctaLink) newErrors.ctaLink = "CTA Link is required";
     if (!formData.image) newErrors.image = "Image is required";
-
-    formData.programs.forEach((item, index) => {
-      if (!item.programTitle.trim()) {
-        newErrors[`programTitle_${index}`] = "Program title is required";
-      }
-
-      if (!item.programDescription.trim()) {
-        newErrors[`programDescription_${index}`] =
-          "Program description is required";
-      }
-    });
 
     setErrors(newErrors);
 
@@ -115,11 +91,18 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
       />
 
       <Input
-        label="Subtitle"
-        name="subtitle"
-        value={formData.subtitle}
+        label="Description"
+        name="description"
+        value={formData.description}
         onChange={handleChange}
-        error={errors.subtitle}
+        error={errors.description}
+      />
+      <Input
+        label="CTA Title"
+        name="ctaTitle"
+        value={formData.ctaTitle}
+        onChange={handleChange}
+        error={errors.ctaTitle}
       />
 
       {/* Image */}
