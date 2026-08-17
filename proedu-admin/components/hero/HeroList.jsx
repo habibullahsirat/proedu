@@ -81,28 +81,6 @@ export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
               {hero.description}
             </p>
 
-            {/* CTA Display */}
-            {hero.cta && (hero.cta.text || hero.cta.href) && (
-              <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                <p className="text-xs text-gray-500 mb-1">Call to Action:</p>
-                <div className="flex items-center gap-2 text-sm">
-                  {hero.cta.text && (
-                    <span className="font-medium text-blue-600">
-                      {hero.cta.text}
-                    </span>
-                  )}
-                  {hero.cta.href && (
-                    <>
-                      <span className="text-gray-400">→</span>
-                      <span className="text-gray-600 font-mono text-xs">
-                        {hero.cta.href}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            )}
-
             {/* Metadata */}
             <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
               <span>ID: {hero._id.slice(-6)}</span>
