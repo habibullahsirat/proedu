@@ -21,7 +21,7 @@ export default function CourseList({ course, onEdit, onDelete, isDeleting }) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No coursees found. Add your first course!
+          No courses found. Add your first course!
         </p>
       </div>
     );
