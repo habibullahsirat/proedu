@@ -93,21 +93,21 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         error={errors.title}
       />
       <Input
-        label="Title"
+        label="Description"
         name="description"
         value={formData.description}
         onChange={handleChange}
         error={errors.description}
       />
       <Input
-        label="Title"
+        label="CTA Text"
         name="ctaTitle"
         value={formData.ctaTitle}
         onChange={handleChange}
         error={errors.ctaTitle}
       />
       <Input
-        label="Title"
+        label="CTA Link"
         name="ctaLink"
         value={formData.ctaLink}
         onChange={handleChange}
