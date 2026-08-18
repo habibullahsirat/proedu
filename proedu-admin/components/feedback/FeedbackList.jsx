@@ -44,7 +44,7 @@ export default function FeedbackList({
             {!imageErrors[feedback._id] ? (
               <Image
                 src={feedback.image}
-                alt={feedback.title}
+                alt={feedback.name}
                 fill
                 className="object-cover"
                 onError={() => handleImageError(feedback._id)}
@@ -80,7 +80,7 @@ export default function FeedbackList({
           {/* Content Section */}
           <div className="p-4">
             <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
-              {feedback.title}
+              {feedback.feedback}
             </h3>
             <p className="text-gray-600 mb-4 line-clamp-2">
               {feedback.description}
