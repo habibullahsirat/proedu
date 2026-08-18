@@ -26,7 +26,7 @@ export default function FeedbackList({
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No feedbackes found. Add your first feedback!
+          No feedback found. Add your first feedback!
         </p>
       </div>
     );
