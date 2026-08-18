@@ -3,13 +3,12 @@
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function HeroForm({ initialData, onSubmit, onCancel }) {
+export default function CourseForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
     description: initialData?.description || "",
+    price: initialData?.price || "",
     image: initialData?.image || "",
-    ctaTitle: initialData?.ctaTitle || "",
-    ctaLink: initialData?.ctaLink || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -58,8 +57,8 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     if (!formData.title.trim()) newErrors.title = "Title is required";
     if (!formData.description.trim())
       newErrors.description = "Description is required";
-    if (!formData.ctaTitle.trim()) newErrors.ctaTitle = "CTA Text is required";
-    if (!formData.ctaLink.trim()) newErrors.ctaLink = "CTA Link is required";
+    if (!formData.price.trim()) newErrors.price = "Price is required";
+
     if (!formData.image) newErrors.image = "Image is required";
 
     setErrors(newErrors);
@@ -100,25 +99,18 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         error={errors.description}
       />
       <Input
-        label="CTA Text"
-        name="ctaTitle"
-        value={formData.ctaTitle}
+        label="Price"
+        name="price"
+        value={formData.price}
         onChange={handleChange}
-        error={errors.ctaTitle}
-      />
-      <Input
-        label="CTA Link"
-        name="ctaLink"
-        value={formData.ctaLink}
-        onChange={handleChange}
-        error={errors.ctaLink}
+        error={errors.price}
       />
 
       {/* Image */}
 
       <PhotoUpload
         name="image"
-        label="Hero Image"
+        label="Course Image"
         required
         value={formData.image}
         onChange={handleImageChange}
@@ -140,7 +132,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Hero
+          {initialData ? "Update" : "Create"} Course
         </button>
       </div>
     </form>
