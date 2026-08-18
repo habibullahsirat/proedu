@@ -3,13 +3,10 @@
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function HeroForm({ initialData, onSubmit, onCancel }) {
+export default function FAQForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
-    title: initialData?.title || "",
-    description: initialData?.description || "",
-    image: initialData?.image || "",
-    ctaTitle: initialData?.ctaTitle || "",
-    ctaLink: initialData?.ctaLink || "",
+    question: initialData?.question || "",
+    answer: initialData?.answer || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -55,12 +52,8 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.title.trim()) newErrors.title = "Title is required";
-    if (!formData.description.trim())
-      newErrors.description = "Description is required";
-    if (!formData.ctaTitle.trim()) newErrors.ctaTitle = "CTA Text is required";
-    if (!formData.ctaLink.trim()) newErrors.ctaLink = "CTA Link is required";
-    if (!formData.image) newErrors.image = "Image is required";
+    if (!formData.question.trim()) newErrors.title = "Question is required";
+    if (!formData.answer.trim()) newErrors.answer = "Answer is required";
 
     setErrors(newErrors);
 
@@ -86,43 +79,18 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Input
-        label="Title"
-        name="title"
-        value={formData.title}
+        label="Question"
+        name="question"
+        value={formData.question}
         onChange={handleChange}
-        error={errors.title}
+        error={errors.question}
       />
       <Input
-        label="Description"
-        name="description"
-        value={formData.description}
+        label="Answer"
+        name="answer"
+        value={formData.answer}
         onChange={handleChange}
-        error={errors.description}
-      />
-      <Input
-        label="CTA Text"
-        name="ctaTitle"
-        value={formData.ctaTitle}
-        onChange={handleChange}
-        error={errors.ctaTitle}
-      />
-      <Input
-        label="CTA Link"
-        name="ctaLink"
-        value={formData.ctaLink}
-        onChange={handleChange}
-        error={errors.ctaLink}
-      />
-
-      {/* Image */}
-
-      <PhotoUpload
-        name="image"
-        label="Hero Image"
-        required
-        value={formData.image}
-        onChange={handleImageChange}
-        error={errors.image}
+        error={errors.answer}
       />
 
       {/* Buttons */}
