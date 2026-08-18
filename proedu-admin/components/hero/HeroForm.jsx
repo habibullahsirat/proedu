@@ -6,7 +6,10 @@ import PhotoUpload from "@/components/ui/PhotoUpload";
 export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
+    description: initialData?.description || "",
     image: initialData?.image || "",
+    ctaTitle: initialData?.ctaTitle || "",
+    ctaLink: initialData?.ctaLink || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -53,6 +56,10 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     const newErrors = {};
 
     if (!formData.title.trim()) newErrors.title = "Title is required";
+    if (!formData.description.trim())
+      newErrors.description = "Description is required";
+    if (!formData.ctaTitle.trim()) newErrors.ctaTitle = "CTA Text is required";
+    if (!formData.ctaLink.trim()) newErrors.ctaLink = "CTA Link is required";
     if (!formData.image) newErrors.image = "Image is required";
 
     setErrors(newErrors);
@@ -84,6 +91,27 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         value={formData.title}
         onChange={handleChange}
         error={errors.title}
+      />
+      <Input
+        label="Title"
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        error={errors.description}
+      />
+      <Input
+        label="Title"
+        name="ctaTitle"
+        value={formData.ctaTitle}
+        onChange={handleChange}
+        error={errors.ctaTitle}
+      />
+      <Input
+        label="Title"
+        name="ctaLink"
+        value={formData.ctaLink}
+        onChange={handleChange}
+        error={errors.ctaLink}
       />
 
       {/* Image */}
