@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import HeroList from "@/components/homepage/hero/HeroList";
-import { useHeroData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
-import HeroForm from "@/components/homepage/hero/HeroForm";
+import HeroList from "@/components/hero/HeroList";
+import { useHeroData } from "@/lib/DataFetch/SWRDataFetch";
+import HeroForm from "@/components/hero/HeroForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
@@ -29,7 +29,7 @@ export default function HeroManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function HeroManager() {
     setIsSubmitting(true);
     try {
       const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${editingHero._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/hero`;
 
       const method = editingHero ? "PATCH" : "POST";
 
