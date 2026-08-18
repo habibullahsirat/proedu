@@ -50,11 +50,11 @@ export default function CourseManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingcourse
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/course/${editingcourse._id}`
+      const url = editingCourse
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/course/${editingCourse._id}`
         : `${process.env.NEXT_PUBLIC_API_URL}/api/course`;
 
-      const method = editingcourse ? "PATCH" : "POST";
+      const method = editingCourse ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,9 +70,9 @@ export default function CourseManager() {
       }
 
       toast.success(
-        editingcourse
-          ? "course updated successfully!"
-          : "course added successfully!",
+        editingCourse
+          ? "Course updated successfully!"
+          : "Course added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -89,7 +89,7 @@ export default function CourseManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading coursees...</p>
+          <p className="text-gray-600">Loading courses...</p>
         </div>
       </div>
     );
@@ -101,10 +101,10 @@ export default function CourseManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            course Management
+            Course Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total coursees:{" "}
+            Total Courses:{" "}
             <span className="font-semibold">{course?.length || 0}</span>
           </p>
         </div>
@@ -126,12 +126,12 @@ export default function CourseManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New course
+          Add New Course
         </button>
       </div>
 
-      {/* course List */}
-      <courseList
+      {/* Course List */}
+      <CourseList
         course={course}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -142,10 +142,10 @@ export default function CourseManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingcourse ? "Edit course" : "Add New course"}
+        title={editingCourse ? "Edit course" : "Add New course"}
       >
-        <courseForm
-          initialData={editingcourse}
+        <CourseForm
+          initialData={editingCourse}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />
