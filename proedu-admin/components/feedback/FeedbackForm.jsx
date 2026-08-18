@@ -8,8 +8,7 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
     feedback: initialData?.feedback || "",
     name: initialData?.name || "",
     department: initialData?.department || "",
-    ctaTitle: initialData?.ctaTitle || "",
-    ctaLink: initialData?.ctaLink || "",
+    image: initialData?.image || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -55,11 +54,10 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.title.trim()) newErrors.title = "Title is required";
-    if (!formData.description.trim())
-      newErrors.description = "Description is required";
-    if (!formData.ctaTitle.trim()) newErrors.ctaTitle = "CTA Text is required";
-    if (!formData.ctaLink.trim()) newErrors.ctaLink = "CTA Link is required";
+    if (!formData.feedback.trim()) newErrors.feedback = "Feedback is required";
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.department.trim())
+      newErrors.department = "Department is required";
     if (!formData.image) newErrors.image = "Image is required";
 
     setErrors(newErrors);
@@ -86,32 +84,25 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Input
-        label="Title"
-        name="title"
-        value={formData.title}
+        label="Feedback"
+        name="feedback"
+        value={formData.feedback}
         onChange={handleChange}
-        error={errors.title}
+        error={errors.feedback}
       />
       <Input
-        label="Description"
-        name="description"
-        value={formData.description}
+        label="Name"
+        name="name"
+        value={formData.name}
         onChange={handleChange}
-        error={errors.description}
+        error={errors.name}
       />
       <Input
-        label="CTA Text"
-        name="ctaTitle"
-        value={formData.ctaTitle}
+        label="Department"
+        name="department"
+        value={formData.department}
         onChange={handleChange}
-        error={errors.ctaTitle}
-      />
-      <Input
-        label="CTA Link"
-        name="ctaLink"
-        value={formData.ctaLink}
-        onChange={handleChange}
-        error={errors.ctaLink}
+        error={errors.department}
       />
 
       {/* Image */}
@@ -140,7 +131,7 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Hero
+          {initialData ? "Update" : "Create"} Feedback
         </button>
       </div>
     </form>
