@@ -101,10 +101,10 @@ export default function FeedbackManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            feedback Management
+            Feedback Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total feedbackes:{" "}
+            Total Feedbacks:{" "}
             <span className="font-semibold">{feedback?.length || 0}</span>
           </p>
         </div>
@@ -126,12 +126,12 @@ export default function FeedbackManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New feedback
+          Add New Feedback
         </button>
       </div>
 
-      {/* feedback List */}
-      <feedbackList
+      {/* Feedback List */}
+      <FeedbackList
         feedback={feedback}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -142,10 +142,10 @@ export default function FeedbackManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingfeedback ? "Edit feedback" : "Add New feedback"}
+        title={editingFeedback ? "Edit Feedback" : "Add New Feedback"}
       >
-        <feedbackForm
-          initialData={editingfeedback}
+        <FeedbackForm
+          initialData={editingFeedback}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />
