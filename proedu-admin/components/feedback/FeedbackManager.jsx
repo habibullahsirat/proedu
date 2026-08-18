@@ -9,17 +9,17 @@ import { toast } from "sonner";
 export default function FeedbackManager() {
   const { data: feedback, mutate, isLoading } = useFeedbackData();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingfeedback, setEditingfeedback] = useState(null);
+  const [editingFeedback, setEditingFeedback] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAdd = () => {
-    setEditingfeedback(null);
+    setEditingFeedback(null);
     setIsModalOpen(true);
   };
 
   const handleEdit = (feedback) => {
-    setEditingfeedback(feedback);
+    setEditingFeedback(feedback);
     setIsModalOpen(true);
   };
 
@@ -37,7 +37,7 @@ export default function FeedbackManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("feedback deleted successfully!");
+      toast.success("Feedback deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
       toast.error("Failed to delete feedback");
@@ -50,11 +50,11 @@ export default function FeedbackManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingfeedback
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/feedback/${editingfeedback._id}`
+      const url = editingFeedback
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/feedback/${editingFeedback._id}`
         : `${process.env.NEXT_PUBLIC_API_URL}/api/feedback`;
 
-      const method = editingfeedback ? "PATCH" : "POST";
+      const method = editingFeedback ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,9 +70,9 @@ export default function FeedbackManager() {
       }
 
       toast.success(
-        editingfeedback
-          ? "feedback updated successfully!"
-          : "feedback added successfully!",
+        editingFeedback
+          ? "Feedback updated successfully!"
+          : "Feedback added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -89,7 +89,7 @@ export default function FeedbackManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading feedbackes...</p>
+          <p className="text-gray-600">Loading feedbacks...</p>
         </div>
       </div>
     );
