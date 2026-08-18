@@ -8,8 +8,9 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     title: initialData?.title || "",
     description: initialData?.description || "",
     image: initialData?.image || "",
-    ctaTitle: initialData?.ctaTitle || "",
-    ctaLink: initialData?.ctaLink || "",
+    stat1: initialData?.stat1 || "",
+    stat2: initialData?.stat2 || "",
+    stat3: initialData?.stat3 || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -58,8 +59,9 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     if (!formData.title.trim()) newErrors.title = "Title is required";
     if (!formData.description.trim())
       newErrors.description = "Description is required";
-    if (!formData.ctaTitle.trim()) newErrors.ctaTitle = "CTA Text is required";
-    if (!formData.ctaLink.trim()) newErrors.ctaLink = "CTA Link is required";
+    if (!formData.stat1.trim()) newErrors.stat1 = "Stat 1 is required";
+    if (!formData.stat2.trim()) newErrors.stat2 = "Stat 2 is required";
+    if (!formData.stat3.trim()) newErrors.stat3 = "Stat 3 is required";
     if (!formData.image) newErrors.image = "Image is required";
 
     setErrors(newErrors);
@@ -100,25 +102,33 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         error={errors.description}
       />
       <Input
-        label="CTA Text"
-        name="ctaTitle"
-        value={formData.ctaTitle}
+        label="Stat 1"
+        name="stat1"
+        value={formData.stat1}
         onChange={handleChange}
-        error={errors.ctaTitle}
+        error={errors.stat1}
       />
       <Input
-        label="CTA Link"
-        name="ctaLink"
-        value={formData.ctaLink}
+        label="Stat 2"
+        name="stat2"
+        value={formData.stat2}
         onChange={handleChange}
-        error={errors.ctaLink}
+        error={errors.stat2}
+      />
+
+      <Input
+        label="Stat 3"
+        name="stat3"
+        value={formData.stat3}
+        onChange={handleChange}
+        error={errors.stat3}
       />
 
       {/* Image */}
 
       <PhotoUpload
         name="image"
-        label="Hero Image"
+        label="Explore Image"
         required
         value={formData.image}
         onChange={handleImageChange}
@@ -140,7 +150,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Hero
+          {initialData ? "Update" : "Create"} Explore
         </button>
       </div>
     </form>
