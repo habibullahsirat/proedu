@@ -94,7 +94,7 @@ const ExploreSchema = new mongoose.Schema(
     stat1: { type: String, required: true, trim: true },
     stat2: { type: String, required: true, trim: true },
     stat3: { type: String, required: true, trim: true },
-    imsge: {
+    image: {
       type: String,
       required: true,
     },
