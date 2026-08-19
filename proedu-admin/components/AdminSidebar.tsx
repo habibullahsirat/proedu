@@ -81,7 +81,7 @@ const defaultNavGroups: NavGroup[] = [
       },
       {
         label: "Site Setting",
-        href: "/admin/site-setting",
+        href: "/admin/site",
         icon: <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>,
       },
     ],
