@@ -183,6 +183,57 @@ const PartnerSchema = new Schema(
   },
 );
 
+// Site Setting
+const SiteSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    image1: {
+      type: String,
+      required: true,
+    },
+
+    image2: {
+      type: String,
+      required: true,
+    },
+
+    facebookLink: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    twitterLink: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    linkedinLink: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    tiktokLink: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
 delete mongoose.models.ExploreSection;
@@ -190,6 +241,7 @@ delete mongoose.models.FAQSection;
 delete mongoose.models.FeedbackSchema;
 delete mongoose.models.CourseSection;
 delete mongoose.models.PartnerSection;
+delete mongoose.models.SiteSection;
 
 export const HeroSection =
   mongoose.models.HeroSection ||
@@ -213,3 +265,6 @@ export const CourseSection =
 export const PartnerSection =
   mongoose.models.PartnerSection ||
   mongoose.model("PartnerSection", PartnerSchema);
+
+export const SiteSection =
+  mongoose.models.SiteSection || mongoose.model("SiteSection", SiteSchema);
