@@ -1,0 +1,139 @@
+"use client";
+
+import { useState } from "react";
+import PhotoUpload from "@/components/ui/PhotoUpload";
+
+export default function PartnerForm({ initialData, onSubmit, onCancel }) {
+  const [formData, setFormData] = useState({
+    title: initialData?.title || "",
+    image: initialData?.image || "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  // ============================
+  // Normal Fields
+  // ============================
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
+  };
+
+  // ============================
+  // Image
+  // ============================
+
+  const handleImageChange = (image) => {
+    setFormData((prev) => ({
+      ...prev,
+      image,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      image: "",
+    }));
+  };
+
+  // ============================
+  // Validation
+  // ============================
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.title.trim()) newErrors.title = "Company name is required";
+    if (!formData.image) newErrors.image = "Company Logo is required";
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // ============================
+  // Submit
+  // ============================
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    onSubmit(formData);
+  };
+
+  // ============================
+  // UI
+  // ============================
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <Input
+        label="Company Name"
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+        error={errors.title}
+      />
+
+      {/* Image */}
+
+      <PhotoUpload
+        name="image"
+        label="Company Logo"
+        required
+        value={formData.image}
+        onChange={handleImageChange}
+        error={errors.image}
+      />
+
+      {/* Buttons */}
+
+      <div className="flex justify-end gap-3 pt-6 border-t">
+        <button
+          type="button"
+          onClick={onCancel}
+          className="px-4 py-2 border rounded-md"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-600 text-white rounded-md"
+        >
+          {initialData ? "Update" : "Create"} Company
+        </button>
+      </div>
+    </form>
+  );
+}
+
+// =========================================
+
+function Input({ label, error, ...props }) {
+  return (
+    <div>
+      <label className="block text-sm font-medium mb-1">{label}</label>
+
+      <input
+        {...props}
+        className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          error ? "border-red-500" : "border-gray-300"
+        }`}
+      />
+
+      {error && <p className="text-sm text-red-600 mt-1">{error}</p>}
+    </div>
+  );
+}
