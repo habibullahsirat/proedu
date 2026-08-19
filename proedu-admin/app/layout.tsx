@@ -8,22 +8,9 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Premium Apparel Sourcing - Your Trusted Partner",
-  description:
-    "Leading apparel sourcing company with quality products, efficient delivery, and global network. Your trusted partner in apparel sourcing.",
-  generator: "360dsoul.com",
-  keywords:
-    "apparel sourcing, clothing supplier, quality garments, wholesale apparel",
-  authors: [{ name: "Your Company" }],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://yourcompany.com",
-    title: "Premium Apparel Sourcing - Your Trusted Partner",
-    description:
-      "Leading apparel sourcing company with quality products, efficient delivery, and global network.",
-    siteName: "Premium Apparel Sourcing",
-  },
+  title: "Pro Edu - An e-learning platform",
+  generator: "Habibullah Sirat",
+  authors: [{ name: "Habiullah Sirat" }],
   icons: {
     icon: [
       {
