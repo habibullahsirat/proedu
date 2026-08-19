@@ -78,7 +78,7 @@ export default function SiteList({ site, onEdit, onDelete, isDeleting }) {
               {site.title}
             </h3>
             <p className="text-gray-600 mb-4 line-clamp-2">
-              {site.description}
+              <strong>Address</strong>: {site.address}
             </p>
 
             {/* Metadata */}
