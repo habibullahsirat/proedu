@@ -164,12 +164,32 @@ const CourseSchema = new mongoose.Schema(
   },
 );
 
+// Partners
+const PartnerSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    image: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
 delete mongoose.models.ExploreSection;
 delete mongoose.models.FAQSection;
 delete mongoose.models.FeedbackSchema;
 delete mongoose.models.CourseSection;
+delete mongoose.models.PartnerSection;
 
 export const HeroSection =
   mongoose.models.HeroSection ||
@@ -189,3 +209,7 @@ export const FeedbackSection =
 export const CourseSection =
   mongoose.models.CourseSection ||
   mongoose.model("CourseSection", CourseSchema);
+
+export const PartnerSection =
+  mongoose.models.PartnerSection ||
+  mongoose.model("PartnerSection", PartnerSchema);
