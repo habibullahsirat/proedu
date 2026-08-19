@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import {
+  ShoppingCart,
   ImageIcon,
   Package,
-  ShieldCheck,
-  ShoppingCart,
   Star,
-  Users,
   Briefcase,
-  FolderOpen,
+  MessageSquare,
 } from "lucide-react";
 
 const DISPLAY_FONT =
@@ -72,7 +71,7 @@ export default function AdminDashboardPage() {
     {
       label: "Hero",
       value: stats.department,
-      icon: ShoppingCart,
+      icon: ImageIcon,
     },
     {
       label: "Explore",
@@ -82,17 +81,17 @@ export default function AdminDashboardPage() {
     {
       label: "Course",
       value: stats.Image,
-      icon: ImageIcon,
+      icon: Briefcase,
     },
     {
       label: "FAQ",
       value: stats.member,
-      icon: Briefcase,
+      icon: Star,
     },
     {
       label: "Feedbacks",
       value: stats.feedback,
-      icon: Star,
+      icon: MessageSquare,
     },
   ];
 
