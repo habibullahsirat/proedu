@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 async function getHero() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_ADMIN_API}/api/hero`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/hero`, {
     cache: "no-store",
   });
 
