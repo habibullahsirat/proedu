@@ -6,6 +6,7 @@ import PhotoUpload from "@/components/ui/PhotoUpload";
 export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     feedback: initialData?.feedback || "",
+    rating: initialData?.rating || 5,
     name: initialData?.name || "",
     department: initialData?.department || "",
     image: initialData?.image || "",
@@ -29,6 +30,21 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
       ...prev,
       [name]: "",
     }));
+  };
+
+  // Rating
+  const handleRatingChange = (rating) => {
+    setFormData((prev) => ({
+      ...prev,
+      rating,
+    }));
+
+    if (errors.rating) {
+      setErrors((prev) => ({
+        ...prev,
+        rating: "",
+      }));
+    }
   };
 
   // ============================
@@ -55,6 +71,7 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
     const newErrors = {};
 
     if (!formData.feedback.trim()) newErrors.feedback = "Feedback is required";
+    if (!formData.rating) newErrors.rating = "Rating is required";
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.department.trim())
       newErrors.department = "Department is required";
@@ -90,6 +107,31 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
         onChange={handleChange}
         error={errors.feedback}
       />
+      <div>
+        <label
+          htmlFor="rating"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Rating <span className="text-red-600">*</span>
+        </label>
+        <div className="flex items-center">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              type="button"
+              onClick={() => handleRatingChange(star)}
+              className={`text-2xl focus:outline-none ${
+                formData.rating >= star ? "text-yellow-400" : "text-gray-300"
+              }`}
+            >
+              {formData.rating >= star ? "★" : "☆"}
+            </button>
+          ))}
+        </div>
+        {errors.rating && (
+          <p className="mt-1 text-sm text-red-600">{errors.rating}</p>
+        )}
+      </div>
       <Input
         label="Name"
         name="name"
