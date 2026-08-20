@@ -183,6 +183,18 @@ const PartnerSchema = new Schema(
   },
 );
 
+// Student Section
+const StudentSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true, trim: true },
+    department: { type: String, required: true, trim: true },
+    image: { type: String, required: true, trim: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Site Setting
 const SiteSchema = new Schema(
   {
@@ -241,6 +253,7 @@ delete mongoose.models.FAQSection;
 delete mongoose.models.FeedbackSchema;
 delete mongoose.models.CourseSection;
 delete mongoose.models.PartnerSection;
+delete mongoose.models.StudentSection;
 delete mongoose.models.SiteSection;
 
 export const HeroSection =
@@ -265,6 +278,10 @@ export const CourseSection =
 export const PartnerSection =
   mongoose.models.PartnerSection ||
   mongoose.model("PartnerSection", PartnerSchema);
+
+export const StudentSection =
+  mongoose.models.StudentSection ||
+  mongoose.model("StudentSection", StudentSchema);
 
 export const SiteSection =
   mongoose.models.SiteSection || mongoose.model("SiteSection", SiteSchema);
