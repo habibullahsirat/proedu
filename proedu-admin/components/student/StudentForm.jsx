@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function CourseForm({ initialData, onSubmit, onCancel }) {
+export default function StudentForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
     department: initialData?.department || "",
