@@ -80,6 +80,11 @@ const defaultNavGroups: NavGroup[] = [
         icon: <span className="w-2 h-2 bg-blue-400 rounded-full"></span>,
       },
       {
+        label: "Students",
+        href: "/admin/student",
+        icon: <span className="w-2 h-2 bg-blue-400 rounded-full"></span>,
+      },
+      {
         label: "Site Setting",
         href: "/admin/site",
         icon: <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>,

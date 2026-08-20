@@ -53,9 +53,9 @@ export default function StudentForm({ initialData, onSubmit, onCancel }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.title.trim()) newErrors.title = "Name is required";
-    if (!formData.description.trim())
-      newErrors.description = "Department is required";
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.department.trim())
+      newErrors.department = "Department is required";
 
     if (!formData.image) newErrors.image = "Image is required";
 
