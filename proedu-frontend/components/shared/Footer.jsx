@@ -13,6 +13,9 @@ export default function Footer() {
       try {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/site-setting`,
+          {
+            cache: "no-store",
+          },
         );
         if (res.ok) {
           const data = await res.json();
