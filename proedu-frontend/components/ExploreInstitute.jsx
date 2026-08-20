@@ -7,9 +7,7 @@ const STAT_LABELS = ["Online Course", "Expert member", "Rating & Review"];
 
 async function getExploreData() {
   const res = await fetch(API_URL, {
-    next: {
-      revalidate: 60,
-    },
+    cache: "no-store",
   });
 
   if (!res.ok) {
