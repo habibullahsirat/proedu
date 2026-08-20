@@ -34,6 +34,11 @@ export const usePartnerData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
+export const useStudentData = () => {
+  const { data, error, mutate } = useSWR(`${API_URL}/api/student`, fetcher);
+  return { data, error, isLoading: !data && !error, mutate };
+};
+
 export const useSiteData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/site-setting`,
