@@ -44,21 +44,18 @@ Include screenshots or demo GIFs to showcase the UI and experience.
 ### Installation
 1. Clone the repository
    git clone https://github.com/habibullahsirat/proedu.git
-   cd proedu
+   - cd proedu
 
-2. Install dependencies
-   npm install
-   # or
-   yarn install
+3. Install dependencies
+   - npm install
 
-3. Create a development environment file
+5. Create a development environment file
    cp .env.example .env
    # then fill in the required values
 
-4. Start the development server
+6. Start the development server
    npm run dev
-   # or
-   yarn dev
+
 
 ### Environment variables
 ```text
